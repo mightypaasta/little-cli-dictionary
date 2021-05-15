@@ -37,9 +37,13 @@ def finder(word):
         return data[word]
     else:
         if corrected_word != []:
-            flag=1
-            print('Did you mean %s'%corrected_word[0])
-            return data[corrected_word[0]]
+            guess=input('Did you mean %s enter Y/N: '%corrected_word[0]).lower()
+            if guess=='y':
+                flag=1
+                return data[corrected_word[0]]
+            else:
+                flag=2
+                return "Search not found"
         else:
             flag=2
             return "Search not found"
@@ -52,14 +56,14 @@ while True:
     if word == '\exit':
         break
     else:
+        answer=finder(word)
         if flag==2:
             print(word+": "+"Search not found")
         else:
             if flag==0:
-                print(word+":          "+finder(word)[0])
+                print(word+":          "+answer[0])
             else:
-                print(spellChecker(word, data)[0].title()+":\t"+' '.join(str(elem) for elem in finder(word)))
-    print(flag)     
+                print(spellChecker(word, data)[0].title()+":\t"+'///////'.join(str(elem) for elem in answer))
     print('\n')       
 
 
