@@ -66,14 +66,14 @@ while True:
     else:
         answer=finder(word)
         if flag==2:
-            print(word+": "+"Search not found")
+            print(word+":   "+"Search not found")
         else:
             if flag==0:
                 print(word+":    "+answer[0])
             elif flag==3:
                 print(word.title()+":    "+answer[0])
             elif flag==4:
-                print(word.upper()+":   "+answer[0])
+                print(word.upper()+":    "+answer[0])
             else:
                 print(spellChecker(word, data)[0].title()+":\t"+'///////'.join(str(elem) for elem in answer))
 
