@@ -39,6 +39,9 @@ def finder(word):
     elif word.title() in data.keys():
         flag=3
         return data[word.title()]
+    elif word.upper() in data.keys():
+        flag=4
+        return data[word.upper()]
     else:
         if corrected_word != []:
             guess=input('Did you mean %s enter Y/N: '%corrected_word[0]).lower()
@@ -69,6 +72,8 @@ while True:
                 print(word+":    "+answer[0])
             elif flag==3:
                 print(word.title()+":    "+answer[0])
+            elif flag==4:
+                print(word.upper()+":   "+answer[0])
             else:
                 print(spellChecker(word, data)[0].title()+":\t"+'///////'.join(str(elem) for elem in answer))
 
