@@ -52,6 +52,7 @@ def finder(word):
 
 # This loop will continue to ask for the words to user until given '\exit' to break the loop and exit the proram
 while True:
+    print('\n')
     word=input("Enter the word to search: ")
     if word == '\exit':
         break
@@ -64,8 +65,6 @@ while True:
                 print(word+":          "+answer[0])
             else:
                 print(spellChecker(word, data)[0].title()+":\t"+'///////'.join(str(elem) for elem in answer))
-    print('\n')       
-
 
 
 
