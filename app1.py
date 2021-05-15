@@ -26,6 +26,7 @@ def spellChecker(word,data):
 # flag=0 if word is correct
 # flag=1 if word has typo
 # flag=2 if word is meaningless
+# flag=3 if word is a noun and its first letter should be capital as in the dictionary
 flag=0
 
 # finder fucntion will return the meaning of words including typo otherwise returning "Search not found" for meaningless words
@@ -35,6 +36,9 @@ def finder(word):
     if word in data.keys():
         flag=0
         return data[word]
+    elif word.title() in data.keys():
+        flag=3
+        return data[word.title()]
     else:
         if corrected_word != []:
             guess=input('Did you mean %s enter Y/N: '%corrected_word[0]).lower()
@@ -62,7 +66,9 @@ while True:
             print(word+": "+"Search not found")
         else:
             if flag==0:
-                print(word+":          "+answer[0])
+                print(word+":    "+answer[0])
+            elif flag==3:
+                print(word.title()+":    "+answer[0])
             else:
                 print(spellChecker(word, data)[0].title()+":\t"+'///////'.join(str(elem) for elem in answer))
 
